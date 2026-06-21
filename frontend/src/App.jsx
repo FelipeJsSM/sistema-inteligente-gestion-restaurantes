@@ -1,11 +1,29 @@
-import Login from './pages/Login/Login'
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import Login from './pages/Login/Login';
+import Dashboard from './pages/Dashboard/Dashboard';
+
+const RutaPrivada = ({ children }) => {
+  const token = localStorage.getItem('token');
+  return token ? children : <Navigate to="/" />;
+};
 
 function App() {
   return (
-    <div>
-      <Login />
-    </div>
-  )
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Login />} />
+        
+        <Route 
+          path="/dashboard" 
+          element={
+            <RutaPrivada>
+              <Dashboard />
+            </RutaPrivada>
+          } 
+        />
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
-export default App
+export default App;

@@ -1,0 +1,121 @@
+.dashboard-page {
+  min-height: 100vh;
+  background: #f5f4f2;
+}
+
+.dashboard-header {
+  background: white;
+  border-bottom: 1px solid #e5e3dc;
+  padding: 0.875rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.dashboard-brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.dashboard-brand-icon {
+  font-size: 20px;
+}
+
+.dashboard-brand-name {
+  font-size: 16px;
+  font-weight: 500;
+  color: #1a1a1a;
+}
+
+.dashboard-header-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.dashboard-avatar {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: #cecbf6;
+  color: #3c3489;
+  font-size: 13px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-cerrar-sesion {
+  font-size: 13px;
+  padding: 6px 14px;
+  border: 1px solid #f0c0c0;
+  border-radius: 8px;
+  background: transparent;
+  color: #c0392b;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.btn-cerrar-sesion:hover {
+  background: #fef0f0;
+}
+
+.dashboard-main {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+
+.dashboard-welcome h1 {
+  font-size: 22px;
+  font-weight: 500;
+  margin: 0 0 4px;
+  color: #1a1a1a;
+}
+
+.dashboard-welcome p {
+  font-size: 14px;
+  color: #888;
+  margin: 0 0 2rem;
+}
+
+.dashboard-modulos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
+}
+
+.modulo-card {
+  background: white;
+  border: 1px solid #e5e3dc;
+  border-radius: 14px;
+  padding: 1.25rem;
+  cursor: pointer;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.modulo-card:hover {
+  border-color: #afa9ec;
+  box-shadow: 0 2px 8px rgba(83, 74, 183, 0.08);
+}
+
+.modulo-icono {
+  font-size: 28px;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.modulo-nombre {
+  font-size: 14px;
+  font-weight: 500;
+  margin: 0 0 3px;
+  color: #1a1a1a;
+}
+
+.modulo-desc {
+  font-size: 12px;
+  color: #888;
+  margin: 0;
+}
