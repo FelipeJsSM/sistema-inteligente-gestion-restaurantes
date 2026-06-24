@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import '../../Dashboard.css';
+import Header from '../../components/Header/Header';
 
 const MODULOS = [
   { icono: '📅', nombre: 'Reservas', descripcion: 'Gestión de mesas', ruta: '/reservas' },
@@ -21,20 +22,9 @@ const Dashboard = () => {
   };
 
   return (
+    <>
+    <Header />
     <div className="dashboard-page">
-      <header className="dashboard-header">
-        <div className="dashboard-brand">
-          <span className="dashboard-brand-icon">🍽️</span>
-          <span className="dashboard-brand-name">SIGR</span>
-        </div>
-        <div className="dashboard-header-right">
-          <div className="dashboard-avatar">{iniciales}</div>
-          <button className="btn-cerrar-sesion" onClick={cerrarSesion}>
-            Cerrar sesión
-          </button>
-        </div>
-      </header>
-
       <main className="dashboard-main">
         <div className="dashboard-welcome">
           <h1>Bienvenido, {usuario?.nombre ?? 'Usuario'}</h1>
@@ -52,6 +42,7 @@ const Dashboard = () => {
         </div>
       </main>
     </div>
+    </>
   );
 };
 

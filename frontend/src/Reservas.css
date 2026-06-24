@@ -1,0 +1,149 @@
+.res-page {
+  padding: 1.5rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.res-title {
+  font-size: 22px;
+  font-weight: 500;
+  color: #1a1a1a;
+  margin: 0 0 1.5rem;
+}
+
+.res-card {
+  background: white;
+  border: 1px solid #e5e3dc;
+  border-radius: 14px;
+  padding: 1.25rem;
+  margin-bottom: 1.25rem;
+}
+
+.res-card-label {
+  font-size: 11px;
+  font-weight: 500;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin: 0 0 1rem;
+}
+
+.res-form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 10px;
+}
+
+.res-form-grid input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 8px 10px;
+  font-size: 13px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+.res-form-grid input:focus {
+  border-color: #534ab7;
+}
+
+.res-form-full {
+  grid-column: 1 / -1;
+}
+
+.btn-guardar {
+  margin-top: 12px;
+  background: #534ab7;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 9px 20px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.btn-guardar:hover {
+  background: #3c3489;
+}
+
+.res-table-wrapper {
+  overflow-x: auto;
+}
+
+.res-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  table-layout: fixed;
+}
+
+.res-table th {
+  text-align: left;
+  font-size: 11px;
+  font-weight: 500;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 8px 12px;
+  border-bottom: 1px solid #e5e3dc;
+}
+
+.res-table td {
+  padding: 10px 12px;
+  border-bottom: 1px solid #f0ede8;
+  color: #1a1a1a;
+  vertical-align: middle;
+}
+
+.res-table tr:last-child td {
+  border-bottom: none;
+}
+
+.res-meta {
+  font-size: 12px;
+  color: #888;
+  margin-top: 2px;
+}
+
+.res-badge {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 500;
+  padding: 3px 8px;
+  border-radius: 6px;
+}
+
+.res-badge--ok {
+  background: #EAF3DE;
+  color: #27500A;
+}
+
+.res-badge--cancel {
+  background: #FCEBEB;
+  color: #791F1F;
+}
+
+.btn-cancelar {
+  font-size: 12px;
+  padding: 4px 10px;
+  border: 1px solid #f0c0c0;
+  border-radius: 6px;
+  background: transparent;
+  color: #c0392b;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.btn-cancelar:hover {
+  background: #fef0f0;
+}
+
+.res-empty {
+  text-align: center;
+  color: #aaa;
+  padding: 2rem;
+}
