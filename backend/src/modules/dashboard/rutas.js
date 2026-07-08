@@ -1,9 +1,15 @@
 const express = require('express');
 const controlador = require('./controlador');
-const { verificarToken } = require('../../middlewares/authMiddleware');
+const { verificarToken, permitirRoles } = require('../../middlewares/authMiddleware');
+const { ROLES } = require('../../config/roles');
 
 const router = express.Router();
 
-router.get('/', verificarToken, controlador.obtenerResumenDashboard);
+router.get(
+  '/',
+  verificarToken,
+  permitirRoles(ROLES.ADMINISTRADOR, ROLES.ENCARGADO_OPERACIONES),
+  controlador.obtenerResumenDashboard
+);
 
 module.exports = router;

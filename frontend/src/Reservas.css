@@ -5,24 +5,29 @@
 }
 
 .res-title {
-  font-size: 22px;
-  font-weight: 500;
-  color: #1a1a1a;
-  margin: 0 0 1.5rem;
+  font-size: 24px;
+  font-weight: 700;
+  color: #111827;
+  margin: 0 0 1.2rem;
+  padding: 0.75rem 1rem;
+  border-left: 5px solid #f4a62a;
+  background: rgba(255, 242, 216, 0.78);
+  border-radius: 14px;
 }
 
 .res-card {
-  background: white;
-  border: 1px solid #e5e3dc;
-  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(244, 166, 42, 0.22);
+  border-radius: 18px;
   padding: 1.25rem;
   margin-bottom: 1.25rem;
+  box-shadow: 0 14px 30px rgba(15, 23, 42, 0.08);
 }
 
 .res-card-label {
-  font-size: 11px;
-  font-weight: 500;
-  color: #888;
+  font-size: 12px;
+  font-weight: 700;
+  color: #a16207;
   text-transform: uppercase;
   letter-spacing: 0.05em;
   margin: 0 0 1rem;
@@ -39,35 +44,39 @@
   box-sizing: border-box;
   padding: 8px 10px;
   font-size: 13px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
+  border: 1px solid rgba(244, 166, 42, 0.26);
+  border-radius: 10px;
   outline: none;
-  transition: border-color 0.15s;
+  background: #fffaf0;
+  transition: border-color 0.15s, box-shadow 0.15s;
 }
 
 .res-form-grid input:focus {
-  border-color: #534ab7;
+  border-color: #f4a62a;
+  box-shadow: 0 0 0 3px rgba(244, 166, 42, 0.16);
 }
 
 .res-form-full {
   grid-column: 1 / -1;
 }
 
-.btn-guardar {
+.res-page .btn-guardar {
   margin-top: 12px;
-  background: #534ab7;
+  background: linear-gradient(135deg, #f4a62a, #e85d4f);
   color: white;
   border: none;
-  border-radius: 8px;
+  border-radius: 10px;
   padding: 9px 20px;
   font-size: 13px;
-  font-weight: 500;
+  font-weight: 600;
   cursor: pointer;
-  transition: background 0.15s;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 8px 16px rgba(232, 93, 79, 0.22);
 }
 
-.btn-guardar:hover {
-  background: #3c3489;
+.res-page .btn-guardar:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 20px rgba(232, 93, 79, 0.28);
 }
 
 .res-table-wrapper {
@@ -84,19 +93,24 @@
 .res-table th {
   text-align: left;
   font-size: 11px;
-  font-weight: 500;
-  color: #888;
+  font-weight: 700;
+  color: #a16207;
   text-transform: uppercase;
   letter-spacing: 0.04em;
   padding: 8px 12px;
-  border-bottom: 1px solid #e5e3dc;
+  border-bottom: 1px solid rgba(244, 166, 42, 0.22);
+  background: #fff6e6;
 }
 
 .res-table td {
   padding: 10px 12px;
-  border-bottom: 1px solid #f0ede8;
+  border-bottom: 1px solid #f8ead0;
   color: #1a1a1a;
   vertical-align: middle;
+}
+
+.res-table tr:hover td {
+  background: #fffaf0;
 }
 
 .res-table tr:last-child td {
@@ -118,13 +132,13 @@
 }
 
 .res-badge--ok {
-  background: #EAF3DE;
-  color: #27500A;
+  background: #dcf8f1;
+  color: #0f766e;
 }
 
 .res-badge--cancel {
-  background: #FCEBEB;
-  color: #791F1F;
+  background: #ffe7e2;
+  color: #b42318;
 }
 
 .btn-cancelar {

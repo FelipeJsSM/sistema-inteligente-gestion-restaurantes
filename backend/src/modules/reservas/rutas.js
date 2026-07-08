@@ -1,13 +1,23 @@
 const express = require('express');
 const controlador = require('./controlador');
-const { verificarToken } = require('../../middlewares/authMiddleware');
+const { verificarToken, permitirRoles } = require('../../middlewares/authMiddleware');
+const { ROLES } = require('../../config/roles');
 
 const router = express.Router();
 
-router.post('/', verificarToken, controlador.crearReserva);
-router.get('/', verificarToken, controlador.obtenerReservas);
-router.get('/:id', verificarToken, controlador.obtenerReservaPorId);
-router.put('/:id', verificarToken, controlador.actualizarReserva);
-router.patch('/:id/cancelar', verificarToken, controlador.cancelarReserva);
+const accesoReservas = permitirRoles(
+  ROLES.ADMINISTRADOR,
+  ROLES.ENCARGADO_OPERACIONES,
+  ROLES.PERSONAL_SERVICIO
+);
+
+router.use(verificarToken);
+router.use(accesoReservas);
+
+router.post('/', controlador.crearReserva);
+router.get('/', controlador.obtenerReservas);
+router.get('/:id', controlador.obtenerReservaPorId);
+router.put('/:id', controlador.actualizarReserva);
+router.patch('/:id/cancelar', controlador.cancelarReserva);
 
 module.exports = router;

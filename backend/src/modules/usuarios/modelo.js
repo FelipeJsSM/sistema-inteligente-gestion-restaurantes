@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const { TODOS_LOS_ROLES, ROLES } = require('../../config/roles');
 
 const usuarioSchema = new mongoose.Schema({
   nombre: {
@@ -24,8 +25,8 @@ const usuarioSchema = new mongoose.Schema({
   },
   rol: {
     type: String,
-    enum: ['Administrador', 'Empleado', 'Supervisor'],
-    default: 'Empleado'
+    enum: TODOS_LOS_ROLES,
+    default: ROLES.PERSONAL_SERVICIO
   },
   activo: {
     type: Boolean,
