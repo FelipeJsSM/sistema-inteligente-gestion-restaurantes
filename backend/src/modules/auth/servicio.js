@@ -2,6 +2,14 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const Usuario = require('../usuarios/modelo');
 
+const obtenerJwtSecret = () => {
+  if (!process.env.JWT_SECRET) {
+    throw new Error('JWT_SECRET no esta configurado');
+  }
+
+  return process.env.JWT_SECRET;
+};
+
 const iniciarSesion = async (correo, clave) => {
   const usuario = await Usuario.findOne({ correo });
 
@@ -26,7 +34,7 @@ const iniciarSesion = async (correo, clave) => {
       correo: usuario.correo,
       rol: usuario.rol
     },
-    process.env.JWT_SECRET,
+    obtenerJwtSecret(),
     {
       expiresIn: '2h'
     }

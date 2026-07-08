@@ -1,16 +1,26 @@
 const express = require('express');
 const controlador = require('./controlador');
-const { verificarToken } = require('../../middlewares/authMiddleware');
+const { verificarToken, permitirRoles } = require('../../middlewares/authMiddleware');
+const { ROLES } = require('../../config/roles');
 
 const router = express.Router();
 
-router.post('/', verificarToken, controlador.crearProducto);
-router.get('/', verificarToken, controlador.obtenerProductos);
-router.get('/bajo-stock', verificarToken, controlador.obtenerProductosBajoStock);
-router.get('/:id', verificarToken, controlador.obtenerProductoPorId);
-router.put('/:id', verificarToken, controlador.actualizarProducto);
-router.patch('/:id/entrada', verificarToken, controlador.registrarEntrada);
-router.patch('/:id/salida', verificarToken, controlador.registrarSalida);
-router.delete('/:id', verificarToken, controlador.eliminarProducto);
+const accesoInventario = permitirRoles(
+  ROLES.ADMINISTRADOR,
+  ROLES.ENCARGADO_OPERACIONES,
+  ROLES.PERSONAL_INVENTARIO
+);
+
+router.use(verificarToken);
+router.use(accesoInventario);
+
+router.post('/', controlador.crearProducto);
+router.get('/', controlador.obtenerProductos);
+router.get('/bajo-stock', controlador.obtenerProductosBajoStock);
+router.get('/:id', controlador.obtenerProductoPorId);
+router.put('/:id', controlador.actualizarProducto);
+router.patch('/:id/entrada', controlador.registrarEntrada);
+router.patch('/:id/salida', controlador.registrarSalida);
+router.delete('/:id', controlador.eliminarProducto);
 
 module.exports = router;

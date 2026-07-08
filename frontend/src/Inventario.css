@@ -1,30 +1,35 @@
 .inv-page {
   padding: 1.5rem;
-  max-width: 1000px;
+  max-width: 1080px;
   margin: 0 auto;
 }
 
 .inv-title {
-  font-size: 22px;
-  font-weight: 500;
-  color: #1a1a1a;
-  margin: 0 0 1.5rem;
+  font-size: 24px;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0 0 1.2rem;
+  padding: 0.75rem 1rem;
+  border-left: 5px solid #0f9f8f;
+  background: rgba(220, 248, 241, 0.72);
+  border-radius: 14px;
 }
 
 .inv-card {
-  background: white;
-  border: 1px solid #e5e3dc;
-  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(15, 159, 143, 0.18);
+  border-radius: 18px;
   padding: 1.25rem;
   margin-bottom: 1.25rem;
+  box-shadow: 0 14px 30px rgba(15, 23, 42, 0.08);
 }
 
 .inv-card-label {
   font-size: 12px;
-  font-weight: 500;
-  color: #888;
+  font-weight: 700;
+  color: #0f766e;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.06em;
   margin: 0 0 1rem;
 }
 
@@ -38,34 +43,38 @@
 .inv-form-grid select {
   width: 100%;
   box-sizing: border-box;
-  padding: 8px 10px;
+  padding: 9px 10px;
   font-size: 13px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
+  border: 1px solid rgba(15, 159, 143, 0.2);
+  border-radius: 10px;
   outline: none;
-  transition: border-color 0.15s;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  background: #f4fbf8;
 }
 
 .inv-form-grid input:focus,
 .inv-form-grid select:focus {
   border-color: #534ab7;
+  box-shadow: 0 0 0 3px rgba(83, 74, 183, 0.14);
 }
 
-.btn-guardar {
+.inv-page .btn-guardar {
   margin-top: 12px;
-  background: #534ab7;
+  background: linear-gradient(135deg, #0f9f8f, #2f9e44);
   color: white;
   border: none;
-  border-radius: 8px;
+  border-radius: 10px;
   padding: 9px 20px;
   font-size: 13px;
-  font-weight: 500;
+  font-weight: 600;
   cursor: pointer;
-  transition: background 0.15s;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 8px 16px rgba(15, 159, 143, 0.24);
 }
 
-.btn-guardar:hover {
-  background: #3c3489;
+.inv-page .btn-guardar:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 20px rgba(15, 159, 143, 0.3);
 }
 
 .inv-table-wrapper {
@@ -82,18 +91,23 @@
 .inv-table th {
   text-align: left;
   font-size: 11px;
-  font-weight: 500;
-  color: #888;
+  font-weight: 700;
+  color: #0f766e;
   text-transform: uppercase;
   letter-spacing: 0.04em;
   padding: 8px 12px;
-  border-bottom: 1px solid #e5e3dc;
+  border-bottom: 1px solid rgba(15, 159, 143, 0.18);
+  background: #e9fbf5;
 }
 
 .inv-table td {
   padding: 10px 12px;
-  border-bottom: 1px solid #f0ede8;
-  color: #1a1a1a;
+  border-bottom: 1px solid #f1f5f9;
+  color: #111827;
+}
+
+.inv-table tr:hover td {
+  background: #f3fcf8;
 }
 
 .inv-table tr:last-child td {
@@ -103,38 +117,39 @@
 .inv-badge {
   display: inline-block;
   font-size: 12px;
-  font-weight: 500;
+  font-weight: 600;
   padding: 3px 8px;
-  border-radius: 6px;
+  border-radius: 999px;
 }
 
 .inv-badge--ok {
-  background: #EAF3DE;
-  color: #27500A;
+  background: #e9f8e9;
+  color: #256029;
 }
 
 .inv-badge--low {
-  background: #FCEBEB;
-  color: #791F1F;
+  background: #fef2f2;
+  color: #b91c1c;
 }
 
 .btn-entrada {
   font-size: 12px;
   padding: 5px 12px;
-  border: 1px solid #ddd;
-  border-radius: 6px;
-  background: transparent;
-  color: #1a1a1a;
+  border: 1px solid #b7eadc;
+  border-radius: 8px;
+  background: #ecfdf5;
+  color: #0f766e;
   cursor: pointer;
-  transition: background 0.15s;
+  transition: background 0.2s ease, transform 0.2s ease;
 }
 
 .btn-entrada:hover {
-  background: #f5f4f2;
+  background: #dff8ed;
+  transform: translateY(-1px);
 }
 
 .inv-empty {
   text-align: center;
-  color: #aaa;
+  color: #94a3b8;
   padding: 2rem;
 }

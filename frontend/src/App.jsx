@@ -4,9 +4,26 @@ import Inventario from './pages/Inventario/Inventario';
 import Dashboard from './pages/Dashboard/Dashboard';
 import Reservas from './pages/Reservas/Reservas';
 
-const RutaPrivada = ({ children }) => {
+const ROLES = {
+  ADMINISTRADOR: 'Administrador',
+  ENCARGADO_OPERACIONES: 'Encargado de Operaciones',
+  PERSONAL_INVENTARIO: 'Personal de Inventario',
+  PERSONAL_SERVICIO: 'Personal de Servicio'
+};
+
+const RutaPrivada = ({ children, rolesPermitidos }) => {
   const token = localStorage.getItem('token');
-  return token ? children : <Navigate to="/" />;
+  const usuario = JSON.parse(localStorage.getItem('usuario'));
+
+  if (!token) {
+    return <Navigate to="/" />;
+  }
+
+  if (rolesPermitidos && !rolesPermitidos.includes(usuario?.rol)) {
+    return <Navigate to="/dashboard" />;
+  }
+
+  return children;
 };
 
 function App() {
@@ -17,9 +34,31 @@ function App() {
         
         <Route path="/dashboard" element={<RutaPrivada><Dashboard /></RutaPrivada>} />
 
-        <Route path="/inventario" element={ <RutaPrivada><Inventario /></RutaPrivada> } />
+        <Route
+          path="/inventario"
+          element={
+            <RutaPrivada rolesPermitidos={[
+              ROLES.ADMINISTRADOR,
+              ROLES.ENCARGADO_OPERACIONES,
+              ROLES.PERSONAL_INVENTARIO
+            ]}>
+              <Inventario />
+            </RutaPrivada>
+          }
+        />
 
-        <Route path="/reservas" element={ <RutaPrivada><Reservas /></RutaPrivada> } />
+        <Route
+          path="/reservas"
+          element={
+            <RutaPrivada rolesPermitidos={[
+              ROLES.ADMINISTRADOR,
+              ROLES.ENCARGADO_OPERACIONES,
+              ROLES.PERSONAL_SERVICIO
+            ]}>
+              <Reservas />
+            </RutaPrivada>
+          }
+        />
       </Routes>
     </BrowserRouter>
   );

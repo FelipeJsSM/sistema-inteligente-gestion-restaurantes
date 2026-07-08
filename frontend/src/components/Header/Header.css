@@ -1,6 +1,7 @@
 .dashboard-header {
-  background: white;
-  border-bottom: 1px solid #e5e3dc;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.94), rgba(238, 247, 255, 0.94) 44%, rgba(237, 253, 245, 0.94));
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(83, 74, 183, 0.18);
   padding: 0.875rem 1.5rem;
   display: flex;
   align-items: center;
@@ -8,6 +9,7 @@
   position: sticky;
   top: 0;
   z-index: 10;
+  box-shadow: 0 10px 28px rgba(15, 23, 42, 0.08);
 }
 
 .dashboard-brand {
@@ -23,14 +25,23 @@
 }
 
 .dashboard-brand-icon {
-  font-size: 20px;
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #534ab7, #0f9f8f);
+  color: white;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 18px rgba(83, 74, 183, 0.2);
 }
 
 .dashboard-brand-name {
   font-size: 16px;
-  font-weight: 500;
-  color: #1a1a1a;
-  transition: color 0.15s;
+  font-weight: 600;
+  color: #111827;
+  transition: color 0.2s ease;
 }
 
 .dashboard-header-right {
@@ -43,10 +54,10 @@
   width: 34px;
   height: 34px;
   border-radius: 50%;
-  background: #cecbf6;
-  color: #3c3489;
+  background: linear-gradient(135deg, #fff0d8, #dff8ed);
+  color: #0f766e;
   font-size: 13px;
-  font-weight: 500;
+  font-weight: 600;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -55,14 +66,15 @@
 .btn-cerrar-sesion {
   font-size: 13px;
   padding: 6px 14px;
-  border: 1px solid #f0c0c0;
-  border-radius: 8px;
-  background: transparent;
-  color: #c0392b;
+  border: 1px solid #fecaca;
+  border-radius: 10px;
+  background: #fff7f5;
+  color: #b91c1c;
   cursor: pointer;
-  transition: background 0.15s;
+  transition: background 0.2s ease, transform 0.2s ease;
 }
 
 .btn-cerrar-sesion:hover {
-  background: #fef0f0;
+  background: #ffe7e2;
+  transform: translateY(-1px);
 }

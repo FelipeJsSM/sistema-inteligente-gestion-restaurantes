@@ -18,6 +18,12 @@ const iniciarSesion = async (req, res) => {
       usuario: resultado.usuario
     });
   } catch (error) {
+    if (error.message === 'JWT_SECRET no esta configurado') {
+      return res.status(500).json({
+        mensaje: 'Error de configuracion de autenticacion'
+      });
+    }
+
     res.status(401).json({
       mensaje: error.message
     });
