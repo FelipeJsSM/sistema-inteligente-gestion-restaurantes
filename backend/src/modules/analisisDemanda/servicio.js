@@ -1,6 +1,7 @@
 const Reserva = require('../reservas/modelo');
 const Inventario = require('../inventario/modelo');
 const Pedido = require('../pedidos/modelo');
+const { GoogleGenerativeAI } = require('@google/generative-ai');
 
 const obtenerAnalisisDemanda = async () => {
   const productosMasConsumidos = await Pedido.aggregate([
@@ -30,45 +31,41 @@ const obtenerAnalisisDemanda = async () => {
 
   const productosBajoStock = await Inventario.find({
     activo: true,
-    $expr: {
-      $lte: ['$cantidadDisponible', '$nivelMinimo']
+    $expr: { $lte: ['$cantidadDisponible', '$nivelMinimo'] }
+  });
+
+  const contextoDatos = `
+    Datos actuales del restaurante:
+    - Productos más consumidos: ${JSON.stringify(productosMasConsumidos)}
+    - Días con más reservas: ${JSON.stringify(reservasPorFecha)}
+    - Productos con bajo stock crítico: ${JSON.stringify(productosBajoStock)}
+  `;
+
+  let recomendacionIA = "";
+
+  if (process.env.GEMINI_API_KEY) {
+    try {
+      const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+      const model = genAI.getGenerativeModel({ model: "gemini-3.5-flash" });
+      
+      const prompt = `Eres un experto administrador de restaurantes y analista de negocios. Analiza los siguientes datos operativos de mi restaurante y redacta 3 recomendaciones estratégicas claras, profesionales y accionables para optimizar el inventario, el personal o las ventas. No uses formato markdown complejo, solo texto claro separado por saltos de línea. \n\n${contextoDatos}`;
+      
+      const result = await model.generateContent(prompt);
+      recomendacionIA = result.response.text();
+    } catch (error) {
+      console.error("Error conectando con la IA:", error);
+      recomendacionIA = "Error al generar el análisis inteligente. Revisa la consola del servidor.";
     }
-  });
-
-  const recomendaciones = [];
-
-  if (productosMasConsumidos.length > 0) {
-    recomendaciones.push(
-      `El producto con mayor demanda es ${productosMasConsumidos[0]._id}, con ${productosMasConsumidos[0].cantidadTotal} unidades consumidas.`
-    );
-  }
-
-  if (reservasPorFecha.length > 0) {
-    recomendaciones.push(
-      `La fecha con mayor actividad registrada es ${reservasPorFecha[0]._id}, con ${reservasPorFecha[0].totalReservas} reservas.`
-    );
-  }
-
-  productosBajoStock.forEach((producto) => {
-    recomendaciones.push(
-      `Se recomienda reabastecer ${producto.nombre}, ya que está por debajo del nivel mínimo.`
-    );
-  });
-
-  if (recomendaciones.length === 0) {
-    recomendaciones.push(
-      'No hay suficiente información histórica para generar recomendaciones avanzadas.'
-    );
+  } else {
+    recomendacionIA = "La clave de IA no está configurada en el archivo .env.";
   }
 
   return {
     productosMasConsumidos,
     reservasPorFecha,
     productosBajoStock,
-    recomendaciones
+    recomendaciones: recomendacionIA
   };
 };
 
-module.exports = {
-  obtenerAnalisisDemanda
-};
+module.exports = { obtenerAnalisisDemanda };

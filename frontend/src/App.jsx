@@ -3,6 +3,8 @@ import Login from './pages/Login/Login';
 import Inventario from './pages/Inventario/Inventario';
 import Dashboard from './pages/Dashboard/Dashboard';
 import Reservas from './pages/Reservas/Reservas';
+import Analisis from './pages/Analisis/Analisis';
+import Usuarios from './pages/Usuarios/Usuarios';
 
 const ROLES = {
   ADMINISTRADOR: 'Administrador',
@@ -47,6 +49,19 @@ function App() {
           }
         />
 
+        <Route 
+          path="/analisis" 
+          element={ 
+            <RutaPrivada rolesPermitidos={[
+              ROLES.ADMINISTRADOR,
+              ROLES.ENCARGADO_OPERACIONES,
+              ROLES.PERSONAL_INVENTARIO
+            ]}>
+              <Analisis />
+            </RutaPrivada> 
+          } 
+        />
+
         <Route
           path="/reservas"
           element={
@@ -59,6 +74,18 @@ function App() {
             </RutaPrivada>
           }
         />
+
+        <Route
+          path="/usuarios"
+          element={
+            <RutaPrivada rolesPermitidos={[
+              ROLES.ADMINISTRADOR
+            ]}>
+              <Usuarios />
+            </RutaPrivada>
+          }
+        />
+        
       </Routes>
     </BrowserRouter>
   );
